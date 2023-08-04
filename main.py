@@ -32,4 +32,4 @@ if __name__ == "__main__":
         results.append(df)
 
     final_data = snake_case_column_names(pd.concat(results))
-    final_data.to_csv(f"data_{date}.csv", index=False)
+    final_data.to_csv(f"data/matchs_{date.replace('-','')}.csv", index=False)
