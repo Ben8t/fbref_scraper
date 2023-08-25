@@ -11,6 +11,7 @@ if __name__ == "__main__":
     parser.add_argument("--date", help="The match date")
     parser.add_argument("--page", help="matchs/ or fixtures/")
     parser.add_argument("--fixture_url", help="fixture url")
+    parser.add_argument("--data_dir", help="Directory to store downloaded data", default="data")
     args = parser.parse_args()
 
     if not is_date_format(args.date):
@@ -35,7 +36,7 @@ if __name__ == "__main__":
             results.append(df)
 
         final_data = snake_case_column_names(pd.concat(results))
-        final_data.to_csv(f"data/matchs_{date.replace('-','')}.csv", index=False)
+        final_data.to_csv(f"{args.data_dir}/matchs_{date.replace('-','')}.csv", index=False)
 
     if args.page == "fixtures/" and args.fixture_url is not None:
         url = args.fixture_url
@@ -45,4 +46,4 @@ if __name__ == "__main__":
         table = etree.fromstring(etree.tostring(tree.xpath('//*[@class="table_wrapper tabbed"]')[0])).xpath("//table")[0]
         final_data = pd.read_html(etree.tostring(table))[0].assign(league=league)
         final_data = snake_case_column_names(final_data)
-        final_data.to_csv(f'data/fixtures_{league.lower().replace(" ","_")}.csv', index=False)
+        final_data.to_csv(f'{args.data_dir}/fixtures_{league.lower().replace(" ","_")}.csv', index=False)
