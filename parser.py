@@ -2,6 +2,7 @@ from lxml import etree, html
 import pandas as pd
 import re
 import requests
+from utils import *
 
 def match_parser(match_url: str) -> pd.DataFrame:
     response = requests.get(match_url)
