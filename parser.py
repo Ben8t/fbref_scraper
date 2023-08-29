@@ -27,4 +27,4 @@ def fixture_parser(fixture_url: str) -> pd.DataFrame:
     table = etree.fromstring(etree.tostring(tree.xpath('//*[@class="table_wrapper tabbed"]')[0])).xpath("//table")[0]
     final_data = pd.read_html(etree.tostring(table))[0].assign(league=league)
     final_data = snake_case_column_names(final_data)
-    return final_data
+    return final_data, league

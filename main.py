@@ -26,5 +26,5 @@ if __name__ == "__main__":
 
     if args.page == "fixtures/" and args.fixture_url is not None:
         url = args.fixture_url
-        parsed_data = fixture_parser(url)
+        parsed_data, league = fixture_parser(url)
         parsed_data.to_csv(f'data/fixtures_{league.lower().replace(" ","_")}.csv', index=False)
