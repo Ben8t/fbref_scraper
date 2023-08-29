@@ -2,6 +2,11 @@
 
 Python scraper for https://fbref.com as a CLI.
 
+## Installation
+
+`pip install -r requirements.txt`
+
+> TODO: create a real Python module and real installable CLI.
 
 ## Example
 
