@@ -4,7 +4,7 @@ import re
 import requests
 from utils import *
 
-def match_parser(match_url: str) -> pd.DataFrame:
+def match_parser(match_url: str, date: str) -> pd.DataFrame:
     response = requests.get(match_url)
     tree = html.fromstring(response.content)
     items = tree.xpath('//div[@class="table_wrapper tabbed"]')

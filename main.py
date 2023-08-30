@@ -21,7 +21,7 @@ if __name__ == "__main__":
     
     if args.page == "matches/":
         url = f"https://fbref.com/en/matchs/{date}"
-        parsed_data = match_parser(url)
+        parsed_data = match_parser(url, date=date)
         parsed_data.to_csv(f"data/matchs_{date.replace('-','')}.csv", index=False)
 
     if args.page == "fixtures/" and args.fixture_url is not None:
